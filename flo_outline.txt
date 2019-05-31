@@ -1,0 +1,86 @@
+-- 공통 --
+header 800~1600
+
+wrap 800~1600
+	section_각페이지명
+		section_inner 800~1600(scroll)
+		footer mt70
+			footer_inner max1440
+
+-- contents --
+tab
+chart
+
+section_contents_wrap pt70 / personal, browse_content, badge_thumbnail_list
+	section_content_head
+		h3
+	section_content
+		//썸네일
+		thumbnail_list / artist_thumbnail_list / &w406(개인추천)
+			li mt40
+				thumbnail_item_area
+					album_thumbnail(기본) / type_playlist(그림자), type_artist(원)
+
+		//뱃지 리스트
+		thumbnail_list.badge_thumbnail_list
+			li
+				bagde_area
+
+		//곡 리스트
+		chart_content_head
+		track_list_table
+
+//뱃지
+bagde_area / type_defalut, type_artist, big_size
+	album_thumbnail
+	badge_track_info
+
+//차트 (탭&리스트)
+section_inner.ct_wrap
+	h2.hidden
+	tab
+	ct_chart
+		chart_content_head
+		chart_lst
+			track_list_table
+
+		//곡선택팝업
+		pop_item_select
+
+//플레이어
+playlist_ct / single_view(독립창), show_playlist_only(리스트만보기?)
+player_ct / mini(한줄), full(전체화면)
+
+//팝업
+popup_container
+
+//드롭다운 레이어
+layer_dropdown w200px
+
+//고객지원 style : _help.scss
+//player style : _player.scss
+
+//플레이어 스낵바
+snack_bar
+
+
+-- 수정 --
+header 사이즈 : ???
+
+contents, footer 사이즈
+section_home or section_inner {width:955px}
+
+개인추천
+thumbnail_list.w406 li{padding-bottom}
+personal_recommend_w:before {box-shadow}
+paging_slide_arrow_w 삭제 or {visibility:hidden}
+paging_dot_w 위치 변경 & 버튼으로 기능 변경
+
+앨범리스트
+swiper-slide 삭제
+paging_slide_arrow_w {visibility:hidden}
+
+상황별 음악
+symbol_list {margin-left:-20px}
+symbol_list li {width:195px}
+symbol_list li .symbol_area {padding-right:20px}
