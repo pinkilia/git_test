@@ -1,0 +1,197 @@
+@charset 'utf-8';
+
+@mixin btn_style_bg_blue($size: 'S') {
+    min-width: if($size == 'S', 85px, 115px);
+    height: if($size == 'S', 36px, 39px);
+    padding: 0 15px;
+    font-size: if($size == 'S', 14px, 18px);
+    color: #fff;
+    line-height: if($size == 'S', 36px, 39px);
+    text-align: center;
+    border-radius: 5px;
+    background-color: #3f3fff;
+
+    &:hover, &.hover {
+        background-color: #2f2fae;
+    }
+    &:active, &.active {
+        background-color: #1a1a86;
+    }
+    &:disabled, &.disabled {
+        opacity: 0.2;
+    }
+}
+
+@mixin btn_style_bg_white($size: 'S') {
+    min-width: if($size == 'S', 85px, 115px);
+    height: if($size == 'S', 36px, 39px);
+    padding: 0 15px;
+    font-size: if($size == 'S', 14px, 18px);
+    color: #484848;
+    line-height: if($size == 'S', 36px, 39px);
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #bebebe;
+}
+
+.btn_bg_blue_s {
+    @include btn_style_bg_blue(S);
+}
+
+.btn_bg_white_s {
+    @include btn_style_bg_white(S);
+}
+
+.btn_bg_error_g {
+    min-width: 137px;
+    height: 62px;
+    padding: 21px 55px;
+    font-size:18px;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #7f7f7f;
+
+    &:hover, &.hover {
+        background-color: #505050;
+    }
+    &:active, &.active {
+        background-color: #505050;
+    }
+    &:disabled, &.disabled {
+        background-color: #2d2d2d;
+    }
+}
+.btn_bg_error_b {
+    min-width: 137px;
+    height: 62px;
+    padding: 21px 55px;
+    font-size:18px;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #3f3fff;
+
+    &:hover, &.hover {
+        background-color: #2f2fae;
+    }
+    &:active, &.active {
+        background-color: #2f2fae;
+    }
+    &:disabled, &.disabled {
+        background-color: #1a1a86;
+    }
+}
+.btn_close_popup {
+    @include retina-sprite($sp-button-btn-popup-close-nor-group);
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+
+// 탭 버튼 스타일
+@mixin btn_style_tab() {
+    height: 32px;
+    padding: 0 15px;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: (32px / 2);
+    border: 1px solid rgba($color: #000, $alpha: .2);
+    vertical-align: top;
+
+    &:hover, &.hover {
+        color: $key_color;
+        border-color: $key_color;
+
+    }
+    &:active, &.active {
+        color: #fff;
+        background-color: $key_color;
+        border-color: $key_color;
+    }
+    @at-root {
+        .on & {
+            color: #fff;
+            background-color: $key_color;
+            border-color: $key_color;
+
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+}
+
+// TODO: 탭 버튼 스타일
+.btn_tab_content {
+    @include btn_style_tab;
+}
+
+.btn_tab_normal {
+    @include btn_style_tab;
+    font-size: 16px;
+    border: 0;
+
+    .ico_like {
+        display: inline-block;
+        @include retina-sprite($sp-button-btn-tab-like-nor-group);
+        @include hide_text;
+    }
+
+    &:hover {
+        .ico_like {
+            @include retina-sprite($sp-button-btn-tab-like-hover-group);
+        }
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        &:hover {
+            color: #333;
+            .ico_like {
+                @include retina-sprite($sp-button-btn-tab-like-nor-group);
+            }
+        }
+        &:active {
+            color:#333;
+            background:none;
+            border-color:#fff;
+        }
+    }
+}
+
+// 차트 더보기 버튼
+@mixin btn_style_more() {
+    height: 32px;
+    padding: 0 15px;
+    border: 1px solid #ebebeb;
+    border-radius: 16px;
+    font-size: 14px;
+    color: #000;
+    line-height: 32px;
+
+    &:active, &.active {
+        color: rgba($color: #000, $alpha: .3);
+    }
+    &:hover, &.hover {
+        color: $key_color;
+        border-color: $key_color;
+    }
+    &:before {
+        display: inline-block;
+        margin-right: 6px;
+        font-size: 20px;
+        vertical-align: top;
+        content: '+';
+    }
+    &.unfolded {
+        &:before {
+            content: '-';
+        }
+    }
+}
+
+.btn_list_more {
+    @include btn_style_more;
+}

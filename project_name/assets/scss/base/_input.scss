@@ -1,0 +1,293 @@
+@charset 'utf-8';
+
+$font-color-focus: #181818;
+$font-color-placeholder: #c4c4c4;
+$border-bottom-color-normal: #ebebeb;
+$border-bottom-color-error: #ff4d78;
+$border-bottom-color-ok: $key_color;
+
+// ie 11, edge input clear, reveal 버튼 공통 삭제
+input[type=text]::-ms-clear, input[type=number]::-ms-clear, input[type=password]::-ms-reveal {
+    // display: none;
+}
+
+// 텍스트
+.comp_inp_txt{
+    height: 58px;
+    border: 0;
+    border-bottom: 1px solid $border-bottom-color-normal;
+    font-size: 15px;
+    color: $font-color-focus;
+
+    // placeholder
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $font-color-placeholder;
+        opacity: 1; /* Firefox */
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 11 */
+        color: $font-color-placeholder;
+    }
+    &::-ms-input-placeholder { /* Microsoft Edge */
+        color: $font-color-placeholder;
+    }
+    &:focus, &.focus{
+        border-color: $font-color-focus;
+        outline: none;
+    }
+    &.error{
+        border-color: $border-bottom-color-error;
+    }
+    &.ok{
+        border-color: $border-bottom-color-ok;
+    }
+}
+
+// 셀렉트 박스
+.comp_select{
+    display: inline-block;
+    position: relative;
+    height: 58px;
+    border-bottom: 1px solid $border-bottom-color-normal;
+
+    select{
+        position: relative;
+        z-index: 10;
+        height: 100%;
+        border: 0;
+        background: transparent;
+        font-size: 15px;
+        color: $font-color-placeholder;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &::-ms-expand {
+            display: none;
+        }
+        &:focus, &.focus{
+            outline: none;
+        }
+        &.selected{
+            color: $font-color-focus;
+        }
+    }
+
+    &:before{
+        @include retina-sprite($sp-button-btn-input-dropdown-nor-group);
+        position: absolute;
+        top: 15px;
+        right: 0;
+        display: block;
+        content: '';
+    }
+}
+
+// 패스워드
+.comp_inp_pw{
+    @extend .comp_inp_txt;
+    padding-right: 75px;
+
+    &:valid{
+        letter-spacing: 3px;
+    }
+}
+
+// 생년월일 (뒷자리)
+.comp_inp_birth{
+    @extend .comp_inp_txt;
+    text-align: center;
+    font-size: 23px;
+    letter-spacing: 2px;
+}
+
+// 인풋 하단 메세지
+%input_message {
+    padding-top: 6px;
+    font-size: 13px;
+    letter-spacing: -1px;
+}
+.txt_inp_error{
+    @extend %input_message;
+    color: $border-bottom-color-error;
+}
+.txt_inp_ok{
+    @extend %input_message;
+    color: $border-bottom-color-ok;
+}
+.txt_inp_info{
+    @extend %input_message;
+    color: $font-color-focus;
+}
+
+.msg-incorrect {
+    position:absolute;
+    bottom:8px;
+    left:30px;
+    font-size:0.6875rem;
+    color:#ff4d78;
+}
+
+// 버튼을 include 하고 있는 input을 위한 wrap div
+.comp_inc_btn{
+    position: relative;
+
+    input{
+        width: 100%;
+    }
+    .btn_area{
+        position: absolute;
+        right: 0;
+        top: 15px;
+        text-align: right;
+    }
+    button[class^="btn_"] {
+        margin-left: 13px;
+    }
+    .btn_pw_del{
+        @include retina-sprite($sp-button-btn-input-delete-nor-group);
+        @include hide_text;
+
+        &:active{
+            @include retina-sprite($sp-button-btn-input-delete-press-group);
+        }
+    }
+    .btn_pw_show{
+        @include retina-sprite($sp-button-btn-input-view-on-dim-group);
+        @include hide_text;
+
+        &.active{
+            @include retina-sprite($sp-button-btn-input-view-on-nor-group);
+        }
+    }
+    .btn_pw_hide{
+        @include retina-sprite($sp-button-btn-input-view-off-dim-group);
+        @include hide_text;
+
+        &.active{
+            @include retina-sprite($sp-button-btn-input-view-off-nor-group);
+        }
+    }
+    .btn_pw_show_off{
+        @include retina-sprite($sp-button-btn-input-view-off-nor-group);
+        @include hide_text;
+    }
+
+    .regist_time{
+        margin-left: 13px;
+        color: $key_color;
+        font-size: 14px;
+
+        &.disabled {
+            color: #c4c4c4;
+        }
+    }
+    .btn_regist_send{
+        @extend %btn_type_round;
+        background-color: rgba(204, 204, 204, .5);
+    }
+    .btn_regist_repeat{
+        @extend %btn_type_round;
+        background-color: $key_color;
+    }
+    .check_byte{
+        font-size: 14px;
+        color: #c4c4c4;
+
+        em{
+            font-style: normal;
+            color: $key_color;
+        }
+    }
+
+    .completion {
+        position: absolute;
+        top:8px;
+        right: -48px;
+        font-size: 15px;
+        color: $font_blue;
+        &.cancel {
+            right:40px;
+        }
+    }
+}
+
+// 라디오 버튼
+.inp_radio{
+    display: none;
+
+    & + label:before{
+        @include retina-sprite($sp-button-btn-setting-nor-group);
+        @include hide_text;
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: middle;
+        content: '';
+    }
+    &:checked + label{
+        span{
+            color: $key_color;
+        }
+
+        &:before{
+            @include retina-sprite($sp-button-btn-setting-sel-group);
+        }
+    }
+}
+
+// 체크 박스 - 원형
+.inp_check_circle{
+    display: none;
+
+    & + label:before{
+        @include retina-sprite($sp-button-btn-thumb-check-nor-group);
+        @include hide_text;
+        display: inline-block;
+        vertical-align: middle;
+        content: '';
+    }
+    &:checked + label{
+        span{
+            color: $key_color;
+        }
+
+        &:before{
+            @include retina-sprite($sp-button-btn-thumb-check-sel-group);
+        }
+    }
+    & + label{
+        &:active{
+            &:before{
+                @include retina-sprite($sp-button-btn-thumb-check-press-group);
+            }
+        }
+    }
+}
+
+// 체크 박스 - 사각형
+.inp_check_square{
+    display: none;
+
+    & + label:before{
+        @include retina-sprite($sp-button-btn-list-check-nor-group);
+        @include hide_text;
+        display: inline-block;
+        vertical-align: middle;
+        content: '';
+    }
+    &:checked + label{
+        span{
+            color: $key_color;
+        }
+
+        &:before{
+            @include retina-sprite($sp-button-btn-player-check-sel-group);
+        }
+    }
+    & + label{
+        &:active{
+            &:before{
+                @include retina-sprite($sp-button-btn-list-check-press-group);
+            }
+        }
+    }
+}

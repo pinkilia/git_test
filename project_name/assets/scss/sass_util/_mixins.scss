@@ -1,0 +1,223 @@
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//
+//     * @Document     : SASS mixin
+//     * @comment      :
+//
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+
+//globalFontSize (기본폰트)
+@mixin globalFontSize($fontFamily,$size,$lineHeight,$color:#333){
+    // $fontFamily : 폰트명
+    // $size: 폰트사이즈
+    // $lineHeight : 라인 헤이트
+    // 예) @include globalFontSize("ng-bold",18,18);
+    //예) font-family:inherit 볼드가 아님 기본 폰트
+    font-family: $fontFamily;
+    font-size: ($size/16)+rem;
+    line-height: ($lineHeight/16)+rem;
+    color: $color;
+}
+
+/* font family (다중폰트) */
+@mixin font_family($font){
+    @if $font == noto {
+        font-family: 'NTS';
+    } @else if $font == noto-kr {
+        font-family: 'NTS-KR';
+    } @else if $font == apple {
+        font-family: 'AppleSDGothicNeo';
+    }
+}
+
+@mixin font_size($size, $height){
+    font-size: ($size / 16) + rem;
+    line-height: ($height / 16) + rem;
+}
+
+//breakPointDevice(반응형 분기점, small medium large huge)
+@mixin breakPointDevice($point){
+    $mobile-point: 160px;// 160~767(mobile : 160~320)
+    $tablet-point: 768px;// 768~999(tablet)
+    $desktop-point: 1000px;// 1200(desktop)
+
+    @if $point == mobile {
+        @media screen and (min-width: $mobile-point) and (max-width: $tablet-point - 1){
+            @content;
+        }
+    } @else if $point == tablet {
+        @media screen and (min-width: $tablet-point) and (max-width: $desktop-point - 1){
+            @content;
+        }
+    } @else if $point == desktop {
+        @media all and (min-width: $desktop-point) {
+            @content;
+        }
+    }
+}
+
+//breakPoint
+// $breakpoints: (
+//   mobile: 160px,
+//   tablet: 999px,
+//   desktop: 1280px
+// );
+// @mixin breakPoint($breakpoint) {
+//  @if map-has-key($breakpoints, $breakpoint) {
+//          @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
+//          @content;
+//      }
+//  }
+//  @else {
+//      @warn "반응형 분기점을 찾을 수 없습니다`#{$breakpoint}`. "
+//      + "breakpoints 맵에서 분기 점을 확인하세요";
+//  }
+// }
+
+@mixin respond-to($media) {
+    @if $media == mediaquery-small {
+        @media only screen and (max-width: $break-small) {
+            @content;
+        }
+    } @else if $media == medium-screens {
+        @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) {
+            @content;
+        }
+    } @else if $media == mediaquery-large {
+        @media only screen and (min-width: $break-large) {
+            @content;
+        }
+    } @else if $media == mediaquery-min {
+        @media only screen and (min-width: $break-small) {
+            @content;
+        }
+    }
+}
+
+//breakPointImages(모바일 전용 대응이미지) :  디바이스 각각 이미지 대응
+@mixin breakPointImages($ratio ,$url, $posX, $posY, $w, $h){
+    @media screen and (-webkit-min-device-pixel-ratio:$ratio)
+    {
+        &{
+            background: url($url) no-repeat $posX $posY;
+            -webkit-background-size:$w $h;
+        }
+    }
+}
+
+//headLine
+@mixin headLine($color, $fontSize, $fontWeight : bold, $lineHeight : 1em){
+    font-family: 'ng-bold';
+    color: $color;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    line-height: $lineHeight;
+}
+
+@mixin align_middle($left, $top, $h, $v) {
+    position: absolute;
+    left: $left;
+    top: $top;
+    transform: translate($h, $v);
+    -webkit-transform: translate($h, $v);
+}
+
+@mixin ellipsis1 {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin ellipsis_multi($line, $height) {
+    display: block;
+    display: -webkit-box;
+    overflow: hidden;
+    @if $height != '' {
+        height: #{$height}px;
+    }
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+}
+
+@mixin wordbreak {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+@mixin clearfix {
+    &:after{
+        display: block;
+        clear: both;
+        content: '';
+    }
+}
+
+//layer popup 배경 처리
+@mixin show_dimd {
+    &:before {
+        content: '';
+        z-index: 99;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.6;
+        background: #000;
+    }
+}
+
+// 애니메이션 키프레임
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @-o-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+// prefix
+@mixin vendor_prefix($property, $values) {
+    -webkit-#{$property}: #{$values};
+    -moz-#{$property}: #{$values};
+    -ms-#{$property}: #{$values};
+    -o-#{$property}: #{$values};
+    #{$property}: #{$values};
+}
+
+// scroll hidden style
+@mixin scroll_style {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    &::-webkit-scrollbar {
+        display: none !important;
+    }
+}
+
+// thumbnail playlist
+@mixin thumbnailShadow($size:'s') {
+    content: '';
+    z-index: if($size == 's', 1, 2);
+    position: absolute;
+    top: if($size == 's', 5px, 9px);
+    left: 50%;
+    display: block;
+    width: if($size == 's', 85%, 92.5%);
+    height: if($size == 's', 85%, 92.5%);
+    border: 1px solid if($size == 's', rgba(218, 218, 218, 0.7), rgba(218, 218, 218, 0.8)) ;
+    border-radius: 6px;
+    transform: translate(-50%, 0);
+    background-color: if($size == 's', #FBFBFB, #F5F5F6);
+}

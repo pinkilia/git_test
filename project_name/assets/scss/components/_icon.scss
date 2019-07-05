@@ -1,0 +1,102 @@
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//
+//    * @Document     : icon(이미지)
+//    * @comment      : 블렛 및 게시판(파일,다운로드,찾기 기타 의미가 없는 아이콘)
+//
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//bul_arrow_type1 : 화살표
+@mixin bulArrow($bul_arrow_type) {
+	.#{$bul_arrow_type}{
+		@content;
+	}
+}
+
+//bul_trg_type1 : 삼각형
+@mixin bulTrg($bul_trg_type) {
+	.#{$bul_trg_type}{
+		@content;
+	}
+}
+
+//bul_arc_type1 : 원
+@mixin bulArc($bul_arc_type) {
+	.#{$bul_arc_type}{
+		@content;
+	}
+}
+
+//bul_rtg_type1 : 사각형
+@mixin bulRtg($bul_rtg_type) {
+	.#{$bul_rtg_type}{
+		@content;
+	}
+}
+
+//bul_file_type1 : 파일
+@mixin bulFile($bul_file_type) {
+	.#{$bul_file_type}{
+		@content;
+	}
+}
+
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//
+//    * @Document     : icon(pseudo)
+//    * @comment      : 블렛
+//
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+// bulSudoRect
+@mixin bulSudoRect(
+    $bul_sudo_rtg_type,
+    $pdLeft : 10,
+    $posTop : 10,
+    $size : 10,
+    $color : #0ef6f5
+) {
+	.#{$bul_sudo_rtg_type}{
+        position: relative;
+    	padding-left: $pdLeft+px;
+        &:after{
+    		content: "";
+    		display: block;
+    		position: absolute;
+    		left: 0;
+    		top: $posTop+px;
+    		width: $size+px;
+    		height: $size+px;
+    		background: $color;
+    	}
+	}
+}
+
+//bulSudoTriangle
+@mixin bulSudoTri(
+	$bul_sudo_tri_type,
+	$posTop : -9,
+	$posLight : 14,
+	$sizeWidth : 7,
+	$sizeHeight : 9,
+	$color : #fff
+) {
+	.#{$bul_sudo_tri_type}{
+		position: relative;
+		&::before {
+		    content: "";
+		    position: absolute;
+		    top: $posTop+px;
+		    right: $posLight+px;
+		    width: 0;
+		    height: 0;
+		    border-left: ($sizeWidth / 2)+px solid transparent;
+		    border-right: ($sizeWidth / 2)+px solid transparent;
+		    border-bottom: $sizeBottom+px solid $color;
+		}
+	}
+}
+
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//
+//    * @Document     : icon_text
+//    * @comment      : icon_text
+//
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣

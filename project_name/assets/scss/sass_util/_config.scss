@@ -1,0 +1,54 @@
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//     * @Document     : Susy Global Setting
+//     * @comment      : Grid Systems
+//     * 옵션
+//     * flow               : 레이아웃 흐름 ltr(left to right) | rtl(right to left)
+//     * math               : 고정 및 가변 설정 {fluid:가변, static:고정 static설정시 column-width 함께사용}
+//     * output             : float | isolate
+//     * gutter-position    : before | after | split(margin) | inside(padding) | inside-static
+//     * container          : length(px) or % | auto
+//     * container-position : 정렬  left | center | right | length(xp값) 예) 10px이면 좌우 여백 10px
+//     * columns            : 컬럼수(number)
+//     * gutters            : 간격(0.1~1)
+//     * column-width       : 넓이 false | px
+//     * global-box-sizing  : border-box | content-box
+//     * debug              : 그리드 옵션
+//     * use-custom         : 그리드 백그라운드 옵션
+//     *
+//     * @include옵션       :
+//     * gutter(), gutters([px or em] inside), break<crear:both>, pre(1)<margin-left:양수값>, pull(1)<margin-left:음수값>,
+//     * push(1)<margin-left>, squish(1)<margin-left,margin-right>, prefix(1)<padding-left>, suffix(1)<padding-right>,
+//     * pad(1)<padding-left,padding-right>, bleed(1 or 0 1)<margin,padding>, layout(12 1/4 fluid float inside)
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+// $susy: (
+//     columns: 12,
+//     gutters: 0,
+//     column-width: 50px,
+//     gutter-position: inside-static,
+// );
+$susy: (
+    flow: ltr,
+    math: fluid,
+    output: float,
+    gutter-position: after,
+    container: 1250px,
+    container-position: center,
+    columns: 12,
+    gutters: 10px/95px,
+    column-width: 90px,
+    global-box-sizing: content-box,
+    last-flow: to,
+    debug: (
+        image: hide,                //가이드라인 show | hide
+        color: #0cc1c7,
+        output: background,            //background | overlay
+        toggle: top right,
+    ),
+    use-custom: (
+        background-image: true,
+        background-options: false,
+        box-sizing: true,
+        clearfix: false,
+        rem: true,
+    )
+);

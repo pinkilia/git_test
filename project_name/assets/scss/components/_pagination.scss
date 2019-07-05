@@ -1,0 +1,88 @@
+@import 'sass_util/_path';
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//
+//    * @Document     : pagination
+//    * @comment      : 게시판
+//
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+// 태그사용법
+// <div class="paging">
+//     <a href="#" class="btn_page_first"><span class="blind">처음페이지</span></a>
+//     <a href="#" class="btn_page_prev"><span class="blind">이전보기</span></a>
+//     <ol class="page_num">
+//         <li><a href="#" class="on">1</a></li>
+//         <li><a href="#">2</a></li>
+//         <li><a href="#">3</a></li>
+//         <li><a href="#">4</a></li>
+//         <li><a href="#">5</a></li>
+//         <li><a href="#">6</a></li>
+//         <li><a href="#">7</a></li>
+//         <li><a href="#">8</a></li>
+//         <li><a href="#">9</a></li>
+//     </ol>
+//     <a href="#" class="btn_page_next"><span class="blind">다음보기</span></a>
+//     <a href="#" class="btn_page_last"><span class="blind">마지막페이지</span></a>
+// </div>
+@mixin paging {
+    .paging{
+        margin: 10px 0;
+        text-align: center;
+        font-size: 0;
+    	>a{
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            margin: 0 2px;
+            border: 1px solid #969b9d;
+    	}
+    	.btn_page_first{
+    		background: url($COMMON_BG_URL + 'btn_page_first.gif') left top no-repeat;
+    	}
+    	.btn_page_prev{
+    		background: url($COMMON_BG_URL + 'btn_page_prev.gif') left top no-repeat;
+    	}
+    	.btn_page_next{
+    		background: url($COMMON_BG_URL + 'btn_page_next.gif') left top no-repeat;
+    	}
+    	.btn_page_last{
+    		background: url($COMMON_BG_URL + 'btn_page_last.gif') left top no-repeat;
+    	}
+    	.page_num{
+            overflow: hidden;
+            display: inline-block;
+
+    		li{
+                float: left;
+    			a{
+                    font-size: 11px;
+                    display: block;
+                    text-align: center;
+                    min-width: 26px;
+                    margin: 0 2px;
+                    padding: 5px 2px;
+                    border: 1px solid #969b9d;
+
+    				&:link, &:visited, &:active{
+    				    text-decoration:none;
+    				}
+    				&:hover {
+    					color:#000;
+    					text-decoration:underline;
+    				}
+    			}
+    		}
+            li:first-child a{
+                margin-left: 5px;
+            }
+            li:last-child a{
+                margin-right: 5px;
+            }
+    		.on{
+                font-weight: bold;
+                color: #519Acd;
+                border: 1px solid #519Acd;
+                background: #f3faff;
+    		}
+    	}
+    }
+}

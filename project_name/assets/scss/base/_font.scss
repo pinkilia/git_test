@@ -1,0 +1,28 @@
+@charset 'utf-8';
+
+@font-face {
+    font-family: 'NBG';
+    font-weight: 300;
+    src: local(☺),
+    url($WEB_FONT_URL + 'NanumBarunGothicLight.woff2') format('woff2'),
+    url($WEB_FONT_URL + 'NanumBarunGothicLight.woff') format('woff'),
+    url($WEB_FONT_URL + 'NanumBarunGothicLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NBG';
+    font-weight: 400;
+    src: local(☺),
+    url($WEB_FONT_URL + 'NanumBarunGothic.woff2') format('woff2'),
+    url($WEB_FONT_URL + 'NanumBarunGothic.woff') format('woff'),
+    url($WEB_FONT_URL + 'NanumBarunGothic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NBG';
+    font-weight: 700;
+    src: local(☺),
+    url($WEB_FONT_URL + 'NanumBarunGothicBold.woff2') format('woff2'),
+    url($WEB_FONT_URL + 'NanumBarunGothicBold.woff') format('woff'),
+    url($WEB_FONT_URL + 'NanumBarunGothicBold.ttf') format('truetype');
+}

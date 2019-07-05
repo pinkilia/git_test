@@ -1,0 +1,29 @@
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//
+//    @Document     : 커스텀 기본 버튼
+//    @comment      :
+//
+///▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//default pseudo
+@mixin btnPseudo(
+    $link:#777,
+    $visited:#777,
+    $hover:#777,
+    $active:#777,
+    $text-deco:none
+){
+    &:link {
+      color: $link;
+    }
+    &:visited {
+      color: $visited;
+    }
+    &:hover {
+      color: $hover;
+      text-decoration: $text-deco;
+    }
+    &:active {
+      color: $active;
+      text-decoration: $text-deco;
+    }
+}

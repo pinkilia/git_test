@@ -1,0 +1,44 @@
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//
+//     * @Document     : SASS 공통 변수
+//     * @comment      : $[속성 : 값]
+//     				   : 속성 :변경불가,
+//     				   : 값 : 가변적으로 허용
+//     				   : 예)$MAIN_BG_URL : '가변(가급적 지양)'
+//                     : KOR	한국어
+//                     : USA	영어
+//                     : CHN	중국어
+//                     : JPN	일본어
+//     * @important    : 변수명은 바뀌지 말아야 하며 그 표현은 대문자(상수)로 표시
+//
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+
+//main 이미지 URL
+$MAIN_BG_URL :'/assets/img/main/';
+
+//sub 이미지 URL
+$SUB_BG_URL :'/assets/img/sub/'; //기본경로
+$SUB_POPUP_URL :'/assets/img/popup/';
+
+//공통 이미지 URL
+$COMMON_BG_URL :'/assets/img/common/'; //기본경로
+
+//웹폰트 URL
+$WEB_FONT_URL : '/assets/font/';
+
+$min_width: 955px;
+$max_width: 1600px;
+
+/* color */
+$font_default: #333;
+$font_black: #000;
+$font_white: #fff;
+$font_grey: #666;
+$font_blue: #3f3fff;
+
+$bg_hover: #fafafa;
+$bg_active: #f5f5f5;
+
+$key_color: $font_blue; // 주요 키 컬러
+
+$header_height: 100px; //header 높이

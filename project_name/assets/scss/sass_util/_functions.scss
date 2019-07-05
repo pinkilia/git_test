@@ -1,0 +1,15 @@
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//
+//     * @Document     : SASS Function
+//     * @comment      :
+//
+//▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣
+//반응형 레이아아웃 가변처리(Pixel을 Percent변환) 함수
+@function PercentForPixel($target, $container : 320){
+	/*
+	* $target     : 가변 변화 넓이
+	* $container  : container 넓이
+	* 예) width : PercentForPixel(400, 1000)
+	*/
+	 @return ($target / $container) * 100%;
+}
